@@ -1,0 +1,92 @@
+@deep: ~'/deep/';
+:host @{deep} {
+    .tb {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    .rw {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    .cl {
+        height: 40px;
+        min-height: 40px;
+        min-width: 140px;
+        width: 140px;
+        border: 1px solid gainsboro;
+        flex-basis: 0;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        max-width: 100%;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        margin-left: 2px;
+        margin-right: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+    .watermark {
+        opacity: 0.40;
+        font-size: 1.2em;
+        text-align: center;
+        width: 1000%;
+        border: 2px;
+        z-index: 1000;
+        border-style: dashed;
+    }
+    .dfc-ex-over {
+        opacity: 0.40;
+        font-size: 1.2em;
+        width: 1000%;
+        border: 2px;
+        border-style: dashed;
+        color: green;
+    }
+    .container {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+}
+
+/* in-flight clone */
+
+.gu-mirror {
+    position: fixed !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+    opacity: 0.8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);
+    pointer-events: none;
+}
+
+/* high-performance display:none; helper */
+
+.gu-hide {
+    left: -9999px !important;
+}
+
+/* added to mirrorContainer (default = body) while dragging */
+
+.gu-unselectable {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+}
+
+/* added to the source element while its mirror is dragged */
+
+.gu-transit {
+    opacity: 0.2;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+    filter: alpha(opacity=20);
+}

@@ -1,0 +1,89 @@
+<!-- <div style="height:100%; width:100%;">
+	<label>Rows:</label>
+	<kendo-numerictextbox style="margin-right: 10px; width:75px;"
+	 [format]="'n'"
+	 [min]="1"
+	 [value]="rows.length"
+	 [step]="1"
+	 (valueChange)="onRowsChange($event)"></kendo-numerictextbox>
+	<label>Columns:</label>
+	<kendo-numerictextbox style="margin-right: 10px; width:75px;"
+	 [format]="'n'"
+	 [min]="1"
+	 [value]="columns.length"
+	 [step]="1"
+	 (valueChange)="onColumnsChange($event)"></kendo-numerictextbox>
+</div> -->
+
+<p></p>
+<div style="display:inline-flex;width: 100%;">
+	<kendo-dropdownlist style="margin-right: 10px; width:125px;"
+	 [popupSettings]="{ width: 125 }"
+	 class="ddl-white"
+	 [data]="fields"
+	 [(value)]="selectedField">
+	</kendo-dropdownlist>
+	<button kendoButton
+	 (click)="appendItem($event)"
+	 [title]="'Insert Bottom'"
+	 [icon]="'insert-bottom'"
+	 [look]="'bare'"
+	 [disabled]="fields?.length === 0"
+	 style="margin-right: 10px;"></button>
+	<button kendoButton
+	 (click)="insertItem($event)"
+	 [title]="'Insert Top'"
+	 [icon]="'insert-top'"
+	 [look]="'bare'"
+	 [disabled]="fields?.length === 0"
+	 style="margin-right: 10px;"></button>
+	<button kendoButton
+	 (click)="insertSpacer($event)"
+	 [title]="'Insert Spacer'"
+	 [icon]="'borders-inside-horizontal'"
+	 [look]="'bare'"
+	 style="margin-right: 10px;"></button>
+	<button kendoButton
+	 (click)="clearItems($event)"
+	 [title]="'Clear All'"
+	 [icon]="'delete'"
+	 [look]="'bare'"
+	 style="margin-right: 10px;"></button>
+	<button kendoButton
+	 (click)="collaspeAll($event)"
+	 [title]="'Collaspe All'"
+	 [icon]="'table-align-top-left'"
+	 [look]="'bare'"
+	 style="margin-right: 10px;"></button>
+	<button kendoButton
+	 (click)="collaspeColumns($event)"
+	 [title]="'Collaspe Top'"
+	 [icon]="'table-align-top-center'"
+	 [look]="'bare'"
+	 style="margin-right: 10px;"></button>
+	<!-- <div class="watermark trashcan"
+	 [dragula]="'DFC'"><i class="k-icon k-i-trash"></i>drop here to remove</div> -->
+</div>
+<p></p>
+<div class="container">
+	<div class="rw"
+	 *ngFor="let row of rows">
+		<div class="cl"
+		 [dragula]="'DFC'"
+		 [attr.data-item-uid]="matrix[column][row]?.uid"
+		 [attr.data-column-index]="column"
+		 [attr.data-row-index]="row"
+		 *ngFor="let column of columns">
+			<!-- {{(column + 1) * (row+1)}} -->
+			<ng-container *ngIf="matrix[column][row]">
+				<div>
+					<dynamic-field-item [fields]="fields"
+					 [item]="matrix[column][row]"
+					 (remove)="removeItem($event)"></dynamic-field-item>
+				</div>
+			</ng-container>
+		</div>
+	</div>
+</div>
+<!-- <p></p>
+<textarea style="margin-top: 0px;margin-bottom: 0px;height: 205px;width: 100%;">{{getModel()}}</textarea> -->

@@ -1,0 +1,25 @@
+<div class="dfi-drag-container">
+	<i class="k-icon k-i-more-vertical grip-handle"></i>
+	<ng-tempate style="width:100%;"
+	 [ngSwitch]="item.controlType?.toLowerCase()">
+		<kendo-dropdownlist *ngSwitchCase="'dropdownlist'"
+		 style="width:100%; height:100%;"
+		 [data]="fields"
+		 [value]="item.field">
+		</kendo-dropdownlist>
+		<input type="text"
+		 *ngSwitchCase="'textbox'"
+		 style="width:100%; height:100%;"
+		 class="k-textbox"
+		 [value]="item.field"
+		 readonly />
+		<hr class="spacer"
+		 *ngSwitchCase="'hr'" />
+		<label *ngSwitchDefault
+		 [innerHtml]="item.field | safe:'html'"
+		 style="width:100%; height:100%;border: none;margin-bottom:0;"
+		 class="k-textbox"></label>
+	</ng-tempate>
+	<i class="k-icon k-i-close remove"
+	 (click)="remove.emit(item)"></i>
+</div>

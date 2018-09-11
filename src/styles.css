@@ -1,0 +1,6 @@
+/* Kendo UI example application styles */
+html, body { margin: 0; padding: 0; height: 100%; width: 100%;}
+body { font-family: "RobotoRegular",Helvetica,Arial,sans-serif; font-size: 14px; margin: 0; }
+my-app { display: block; box-sizing: border-box; padding: 30px; }
+my-app > .k-icon.k-i-loading { font-size: 64px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+ 
